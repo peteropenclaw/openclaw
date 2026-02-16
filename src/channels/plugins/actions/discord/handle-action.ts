@@ -49,6 +49,7 @@ export async function handleDiscordMessageAction(
       readStringParam(params, "media", { trim: false }) ??
       readStringParam(params, "path", { trim: false }) ??
       readStringParam(params, "filePath", { trim: false });
+    const filename = readStringParam(params, "filename");
     const replyTo = readStringParam(params, "replyTo");
     const rawEmbeds = params.embeds;
     const embeds = Array.isArray(rawEmbeds) ? rawEmbeds : undefined;
@@ -62,6 +63,7 @@ export async function handleDiscordMessageAction(
         to,
         content,
         mediaUrl: mediaUrl ?? undefined,
+        filename: filename ?? undefined,
         replyTo: replyTo ?? undefined,
         components,
         embeds,
